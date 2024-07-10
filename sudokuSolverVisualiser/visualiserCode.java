@@ -15,15 +15,12 @@ public class SudokuSolverGUI extends JFrame {
 
     public SudokuSolverGUI() {
         setTitle("Sudoku Solver");
-        setSize(700, 700);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        getContentPane().setBackground(new Color(240, 240, 240)); // Light gray background
 
         JPanel gridPanel = new JPanel();
         gridPanel.setLayout(new GridLayout(SIZE, SIZE));
-        gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Padding around the grid
-
         for (int row = 0; row < SIZE; row++) {
             rows[row] = new HashSet<>();
             cols[row] = new HashSet<>();
@@ -31,21 +28,16 @@ public class SudokuSolverGUI extends JFrame {
             for (int col = 0; col < SIZE; col++) {
                 cells[row][col] = new JTextField();
                 cells[row][col].setHorizontalAlignment(JTextField.CENTER);
-                cells[row][col].setFont(new Font("Arial", Font.BOLD, 30)); // Larger font size
-                cells[row][col].setBackground(Color.WHITE);
-                cells[row][col].setBorder(BorderFactory.createLineBorder(Color.GRAY)); // Cell border
+                cells[row][col].setFont(new Font("Arial", Font.BOLD, 20));
                 gridPanel.add(cells[row][col]);
             }
         }
         add(gridPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 3, 10, 10)); // Spacing between buttons
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Padding around the buttons
+        buttonPanel.setLayout(new GridLayout(1, 3));
 
         JButton loadButton = new JButton("Load Puzzle");
-        loadButton.setFont(new Font("Arial", Font.PLAIN, 16));
-        loadButton.setFocusPainted(false);
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,8 +47,6 @@ public class SudokuSolverGUI extends JFrame {
         buttonPanel.add(loadButton);
 
         JButton solveButton = new JButton("Solve");
-        solveButton.setFont(new Font("Arial", Font.PLAIN, 16));
-        solveButton.setFocusPainted(false);
         solveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,8 +61,6 @@ public class SudokuSolverGUI extends JFrame {
         buttonPanel.add(solveButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setFont(new Font("Arial", Font.PLAIN, 16));
-        clearButton.setFocusPainted(false);
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,15 +74,15 @@ public class SudokuSolverGUI extends JFrame {
 
     private void loadPuzzle() {
         int[][] puzzle = {
-                {5, 3, 0, 0, 7, 0, 0, 0, 0},
-                {6, 0, 0, 1, 9, 5, 0, 0, 0},
-                {0, 9, 8, 0, 0, 0, 0, 6, 0},
-                {8, 0, 0, 0, 6, 0, 0, 0, 3},
-                {4, 0, 0, 8, 0, 3, 0, 0, 1},
-                {7, 0, 0, 0, 2, 0, 0, 0, 6},
-                {0, 6, 0, 0, 0, 0, 2, 8, 0},
-                {0, 0, 0, 4, 1, 9, 0, 0, 5},
-                {0, 0, 0, 0, 8, 0, 0, 7, 9}
+            {5, 3, 0, 0, 7, 0, 0, 0, 0},
+            {6, 0, 0, 1, 9, 5, 0, 0, 0},
+            {0, 9, 8, 0, 0, 0, 0, 6, 0},
+            {8, 0, 0, 0, 6, 0, 0, 0, 3},
+            {4, 0, 0, 8, 0, 3, 0, 0, 1},
+            {7, 0, 0, 0, 2, 0, 0, 0, 6},
+            {0, 6, 0, 0, 0, 0, 2, 8, 0},
+            {0, 0, 0, 4, 1, 9, 0, 0, 5},
+            {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
 
         for (int row = 0; row < SIZE; row++) {
